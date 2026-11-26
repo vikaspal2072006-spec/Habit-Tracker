@@ -21,3 +21,13 @@ habits=[
 ]
 for index,habit in enumerate(habits,start=1):
     st.write(index,habit)
+st.divider()
+st.subheader("➕ Add New Habit")
+new_habit=st.text_input("Enter new habit")
+if st.button("ADD HABIT"):
+    if new_habit.strip():
+        habits.append(new_habit.strip())
+        st.success("New habit added successfully")
+    else:
+        st.warning("Enter Habit ")
+
