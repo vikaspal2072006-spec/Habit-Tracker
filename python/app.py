@@ -24,10 +24,16 @@ for index,habit in enumerate(habits,start=1):
 st.divider()
 st.subheader("➕ Add New Habit")
 new_habit=st.text_input("Enter new habit")
-if st.button("ADD HABIT"):
-    if new_habit.strip():
-        habits.append(new_habit.strip())
-        st.success("New habit added successfully")
-    else:
-        st.warning("Enter Habit ")
+if st.button("Add Habit"):
 
+    new_habit = new_habit.strip()
+
+    if not new_habit:
+        st.warning("Please enter a habit name.")
+
+    elif new_habit.lower() in [habit.lower() for habit in habits]:
+        st.warning("Habit already exists!")
+
+    else:
+        habits.append(new_habit)
+        st.success("Habit added successfully!")
