@@ -56,3 +56,26 @@ if habits:
 
 else:
     st.info("No habits available to remove. ")
+
+st.divider()
+st.subheader("✅ Daily Habit Tracker")
+habit_status = {}
+for habit in habits:
+    habit_status[habit] = st.checkbox(habit)
+    if habit_status[habit]:
+        st.success(f"{habit}completed")
+    else:
+        st.info(f"{habit}pending")
+
+complete_count = sum(habit_status.values())
+total_habit=len(habits)
+if total_habit>0:
+    percentage=(complete_count/total_habit)*100
+else:
+    percentage=0
+
+st.divider()
+st.subheader("📊 Today's Progress")
+st.metric("Complete Habit",f"{complete_count}/{total_habit}")
+st.progress(percentage/100)
+st.write(f"{percentage:.2f}% Completed")
