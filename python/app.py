@@ -10,7 +10,8 @@ if name:
     st.success(f"Welcome,{name}!!!")
 st.divider()
 st.header("🎯 My Daily Habits")
-habits=[
+if "habits" not in st.session_state:
+    st.session_state.habits=[
     "Wake Up Early",
     "Exercise",
     "Create Project",
@@ -19,6 +20,7 @@ habits=[
     "Read Books",
     "Drink Enough Water"
 ]
+habits = st.session_state.habits
 for index,habit in enumerate(habits,start=1):
     st.write(index,habit)
 st.divider()
@@ -36,4 +38,5 @@ if st.button("Add Habit"):
 
     else:
         habits.append(new_habit)
-        st.success("Habit added successfully!")
+        st.success("Habit added successfully!!!!")
+        st.rerun()
