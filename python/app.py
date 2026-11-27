@@ -40,3 +40,19 @@ if st.button("Add Habit"):
         habits.append(new_habit)
         st.success("Habit added successfully!!!!")
         st.rerun()
+
+st.divider()
+st.subheader("🗑️ Remove Habit")
+if habits:
+    selected_habit = st.selectbox(
+        "Select a habit to remove",
+        habits
+    )
+
+    if st.button("Remove Habit"):
+        habits.remove(selected_habit)
+        st.success("Habit removed successfully")
+        st.rerun()
+
+else:
+    st.info("No habits available to remove. ")
